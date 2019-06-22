@@ -1,0 +1,53 @@
+﻿:root {
+    --turquoise-color: hsl(180, 100%, 26%);
+    --dark-turquoise-color: hsl(180, 100%, 20%);
+}
+
+body {
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--turquoise-color);
+    height: 8vh;
+}
+
+#logo {
+    font-family: 'Rock Salt', cursive;
+    font-size: 3.5vh;
+}
+
+nav {
+    display: flex;
+    align-items: flex-end;
+}
+
+    nav ul {
+        margin: 0;
+        display: flex;
+        align-items: flex-end;
+        height: inherit;
+    }
+
+        nav ul li {
+            text-align: center;
+            display: inline-block;
+            list-style: none;
+            height: 100%;
+        }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: white;
+                cursor: pointer;
+            }
+
+                nav ul li a:hover {
+                    background: var(--dark-turquoise-color);
+                }

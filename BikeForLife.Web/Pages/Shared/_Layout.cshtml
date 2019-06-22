@@ -2,10 +2,25 @@
 
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="~/Styling/MainStyle.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <header>
+        <div id="logo">
+            Bike for Life
+        </div>
+        <nav>
+            <ul>
+                <li><a asp-page="Index">Forside</a></li>
+                <li><a asp-page="">Medlemmer</a></li>
+                <li><a asp-page="">Ruter</a></li>
+                <li><a asp-page="">Tilmelding</a></li>
+            </ul>
+        </nav>
+    </header>
     <div>
         @RenderBody()
     </div>
