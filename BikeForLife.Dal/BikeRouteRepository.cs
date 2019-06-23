@@ -5,27 +5,27 @@ using System.Data;
 
 namespace BikeForLife.Dal
 {
-    public class RouteRepository : BaseRepository
+    public class BikeRouteRepository : BaseRepository
     {
-        public List<Route> GetAll()
+        public List<BikeRoute> GetAll()
         {
-            string sql = "SELECT * FROM Routes";
+            string sql = "SELECT * FROM BikeRoutes";
             DataTable dataTable = ExecuteQuery(sql);
             if (dataTable == null)
                 throw new InvalidOperationException($"DataTable was null. SQL string is: {sql}");
             return HandleData(dataTable);
         }
 
-        private List<Route> HandleData(DataTable dataTable)
+        private List<BikeRoute> HandleData(DataTable dataTable)
         {
             if (dataTable == null)
                 return null;
 
-            List<Route> routes = new List<Route>();
+            List<BikeRoute> routes = new List<BikeRoute>();
             
             foreach (DataRow row in dataTable.Rows)
             {
-                routes.Add(new Route()
+                routes.Add(new BikeRoute()
                 {
                     Id = (int)row["Id"],
                     Name = (string)row["Name"],

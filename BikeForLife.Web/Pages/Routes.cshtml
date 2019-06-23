@@ -4,5 +4,51 @@
     ViewData["Title"] = "Ruter";
 }
 
-<h1>Routes</h1>
+<h1>Ruter</h1>
+<table>
+    <tr>
+        <th>Navn</th>
+        <th>Længde</th>
+        <th>Sværhedsgrad</th>
+        <th>Land</th>
+        <th>By</th>
+        <th>Rediger</th>
+    </tr>
+    <tbody>
+        @{
+            foreach (BikeRoute bikeRoute in Model.BikeRoutes)
+            {
+                <tr>
+                    <td>@bikeRoute.Name</td>
+                    <td>@bikeRoute.Length</td>
+                    <td>@DifficultyHelper.GetDescription(bikeRoute.Difficulty)</td>
+                    <td>@bikeRoute.Country</td>
+                    <td>@bikeRoute.City</td>
+                    <td>
+                        <a href=""><i class="fa fa-edit" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
+<div class="form">
+    <h2>Opret nyt IT-udstyr</h2>
+    <form asp-page="Routes">
+        <label asp-for="BikeRoute.Name"></label>
+        <input asp-for="BikeRoute.Name" />
+        <label asp-for="BikeRoute.Length"></label>
+        <input asp-for="BikeRoute.Length" />
+        <label asp-for="BikeRoute.Difficulty"></label>
+        <select asp-for="BikeRoute.Difficulty" asp-items="Html.GetEnumSelectList<Difficulty>()">
+            <option selected="selected" value="">Vælg en sværhedsgrad</option>
+        </select>
+        <label asp-for="BikeRoute.Country"></label>
+        <input asp-for="BikeRoute.Country" />
+        <label asp-for="BikeRoute.City"></label>
+        <input asp-for="BikeRoute.City" />
+        <button type="submit">Opret</button>
+    </form>
+</div>

@@ -3,25 +3,29 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link href="~/Styling/MainStyle.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>BFL - @ViewBag.Title</title>
 </head>
 <body>
     <header>
+
         <div id="logo">
-            Bike for Life
+            <a asp-page="Index">
+                Bike for Life
+            </a>
         </div>
         <nav>
             <ul>
                 <li><a asp-page="Index">Forside</a></li>
                 <li><a asp-page="">Medlemmer</a></li>
-                <li><a asp-page="">Ruter</a></li>
+                <li><a asp-page="Routes">Ruter</a></li>
                 <li><a asp-page="">Tilmelding</a></li>
             </ul>
         </nav>
     </header>
-    <div>
+    <div class="wrapper">
         @RenderBody()
     </div>
 </body>

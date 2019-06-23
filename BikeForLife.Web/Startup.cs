@@ -26,6 +26,7 @@ namespace BikeForLife.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("Errors/{0}");
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
         }

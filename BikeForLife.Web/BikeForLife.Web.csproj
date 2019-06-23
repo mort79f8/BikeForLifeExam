@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BikeForLife.Dal\BikeForLife.Dal.csproj" />
+    <ProjectReference Include="..\BikeForLife.Entities\BikeForLife.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
