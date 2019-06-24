@@ -27,7 +27,7 @@ namespace BikeForLife.Dal
             {
                 routes.Add(new BikeRoute()
                 {
-                    Id = (int)row["Id"],
+                    Id = (int)row["BikeRouteId"],
                     Name = (string)row["Name"],
                     Difficulty = (Difficulty)row["Difficulty"],
                     Length = (double)row["Length"],
