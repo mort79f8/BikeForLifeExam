@@ -36,6 +36,7 @@ namespace BikeForLife.Web.Pages
 
         }
 
+        // Samtale med Kian hjalp med at udforme de næste to metoder 
         public string GetTempatureBasedOnCity(string city)
         {
             OpenWeatherMap weatherMap = new OpenWeatherMap();
