@@ -12,7 +12,7 @@
         <th>Sværhedsgrad</th>
         <th>Land</th>
         <th>By</th>
-        <th>Rediger</th>
+        @*<th>Rediger</th>*@
     </tr>
     <tbody>
         @{
@@ -24,9 +24,9 @@
                     <td>@DifficultyHelper.GetDescription(bikeRoute.Difficulty)</td>
                     <td>@bikeRoute.Country</td>
                     <td>@bikeRoute.City</td>
-                    <td>
+                    @*<td>
                         <a href=""><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    </td>
+                    </td>*@
                 </tr>
             }
         }
