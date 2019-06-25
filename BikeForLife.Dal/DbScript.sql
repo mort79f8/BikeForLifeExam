@@ -20,3 +20,19 @@ CREATE TABLE BikeRoutes(
 INSERT BikeRoutes VALUES ('Lundbykrat', 15.3, 1, 'Denmark', 'Gistrup')
 INSERT BikeRoutes VALUES ('Rebild bakker', 28.4, 2, 'Denmark', 'Rebild')
 INSERT BikeRoutes VALUES ('Aalborg Rundt', 65.2, 3, 'Denmark', 'Aalborg')
+GO
+
+CREATE TABLE Members(
+	MemberId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Name NVARCHAR(max) NOT NULL,
+	EnrollmentDate DATE NOT NULL
+)
+GO
+
+CREATE TABLE Rides(
+	RideId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	MemberId INT NOT NULL FOREIGN KEY REFERENCES Members(MemberId),
+	BikeRouteId INT NOT NULL FOREIGN KEY REFERENCES BikeRoutes(BikeRouteId),
+	RideDate DATE NOT NULL 	
+)
+GO
