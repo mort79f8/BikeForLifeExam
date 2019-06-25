@@ -12,6 +12,7 @@
         <th>Sværhedsgrad</th>
         <th>Land</th>
         <th>By</th>
+        <th>Vejret</th>
         @*<th>Rediger</th>*@
     </tr>
     <tbody>
@@ -24,7 +25,14 @@
                     <td>@DifficultyHelper.GetDescription(bikeRoute.Difficulty)</td>
                     <td>@bikeRoute.Country</td>
                     <td>@bikeRoute.City</td>
-                    @*<td>
+                    <td>@Model.GetTempatureBasedOnCity(bikeRoute.City) 
+                    @if (Model.GetWeatherIconBasedOnCity(bikeRoute.City) != "N/A")
+                    { 
+                            <img src="@Model.GetWeatherIconBasedOnCity(bikeRoute.City)" />
+                    }
+                    </td>
+                    @*
+                    <td>
                         <a href=""><i class="fa fa-edit" aria-hidden="true"></i></a>
                     </td>*@
                 </tr>
