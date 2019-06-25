@@ -17,7 +17,7 @@ namespace BikeForLife.EntitiesTest
             Difficulty actualDiffculty = member.RideLevel;
 
             //Assert
-            Assert.Equal(actualDiffculty, expectedDifficulty);
+            Assert.Equal(expectedDifficulty, actualDiffculty);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace BikeForLife.EntitiesTest
             Difficulty actualDiffculty = member.RideLevel;
 
             //Assert
-            Assert.Equal(actualDiffculty, expectedDifficulty);
+            Assert.Equal(expectedDifficulty, actualDiffculty);
         }
 
         [Fact]
@@ -68,12 +68,132 @@ namespace BikeForLife.EntitiesTest
             ride4.Route = route;
             member.Add(ride4);
             Ride ride5 = new Ride();
+            ride5.Route = route;
             member.Add(ride5);
+            Difficulty expectedDifficulty = Difficulty.Normal;
+
             //Act
+            Difficulty actualDiffculty = member.RideLevel;
 
             //Assert
-
+            Assert.Equal(expectedDifficulty, actualDiffculty);
         }
 
+        [Fact]
+        public void GetRideLevel_ReturnsNormalWith11Rides()
+        {
+            //Arrange
+            Member member = new Member();
+            BikeRoute route = new BikeRoute();
+            route.Difficulty = Difficulty.Easy;
+            for (int i = 0; i < 11; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route;
+                member.Add(ride);
+            }
+            Difficulty expectedDifficulty = Difficulty.Normal;
+
+            //Act
+            Difficulty actualDiffculty = member.RideLevel;
+
+            //Assert
+            Assert.Equal(expectedDifficulty, actualDiffculty);
+        }
+
+        [Fact]
+        public void GetRideLevel_ReturnsNormalWith12Rides4IsNormal()
+        {
+            Member member = new Member();
+            BikeRoute route1 = new BikeRoute();
+            BikeRoute route2 = new BikeRoute();
+            route1.Difficulty = Difficulty.Easy;
+            route2.Difficulty = Difficulty.Normal;
+            for (int i = 0; i < 8; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route1;
+                member.Add(ride);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route2;
+                member.Add(ride);
+            }
+            Difficulty expectedDifficulty = Difficulty.Normal;
+
+            //Act
+            Difficulty actualDiffculty = member.RideLevel;
+
+            //Assert
+            Assert.Equal(expectedDifficulty, actualDiffculty);
+        }
+
+        [Fact]
+        public void GetRideLevel_ReturnsHardWith12Rides5IsNormal()
+        {
+            Member member = new Member();
+            BikeRoute route1 = new BikeRoute();
+            BikeRoute route2 = new BikeRoute();
+            route1.Difficulty = Difficulty.Easy;
+            route2.Difficulty = Difficulty.Normal;
+            for (int i = 0; i < 7; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route1;
+                member.Add(ride);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route2;
+                member.Add(ride);
+            }
+            Difficulty expectedDifficulty = Difficulty.Hard;
+
+            //Act
+            Difficulty actualDiffculty = member.RideLevel;
+
+            //Assert
+            Assert.Equal(expectedDifficulty, actualDiffculty);
+        }
+
+        [Fact]
+        public void GetRideLevel_ReturnsHardWith30Rides9IsNormal()
+        {
+            Member member = new Member();
+            BikeRoute route1 = new BikeRoute();
+            BikeRoute route2 = new BikeRoute();
+            BikeRoute route3 = new BikeRoute();
+            route1.Difficulty = Difficulty.Easy;
+            route2.Difficulty = Difficulty.Normal;
+            route3.Difficulty = Difficulty.Hard;
+            for (int i = 0; i < 7; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route1;
+                member.Add(ride);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route2;
+                member.Add(ride);
+            }
+            for (int i = 0; i < 14; i++)
+            {
+                Ride ride = new Ride();
+                ride.Route = route3;
+                member.Add(ride);
+            }
+            Difficulty expectedDifficulty = Difficulty.Hard;
+
+            //Act
+            Difficulty actualDiffculty = member.RideLevel;
+
+            //Assert
+            Assert.Equal(expectedDifficulty, actualDiffculty);
+        }
     }
 }
