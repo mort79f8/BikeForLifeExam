@@ -178,13 +178,13 @@ namespace BikeForLife.EntitiesTest
             for (int i = 0; i < 9; i++)
             {
                 Ride ride = new Ride();
-                ride.Route = route2;
+                ride.Route = route3;
                 member.Add(ride);
             }
             for (int i = 0; i < 14; i++)
             {
                 Ride ride = new Ride();
-                ride.Route = route3;
+                ride.Route = route2;
                 member.Add(ride);
             }
             Difficulty expectedDifficulty = Difficulty.Hard;
