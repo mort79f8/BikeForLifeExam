@@ -12,4 +12,16 @@
         <th>Tilmeldings dato</th>
         <th>Køreniveau</th>
     </tr>
+    <tbody>
+        @{ 
+            foreach (Member member in Model.Members)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.EnrollmentDate</td>
+                    <td>@member.RideLevel</td>
+                </tr>
+            }
+        }
+    </tbody>
 </table>

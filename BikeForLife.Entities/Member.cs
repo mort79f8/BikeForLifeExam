@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BikeForLife.Entities
 {
-    class Members
+    public class Member
     {
         private List<Ride> rides;
         public int Id { get; set; }
@@ -20,7 +20,7 @@ namespace BikeForLife.Entities
 
         public bool Add(Ride ride)
         {
-            throw new NotImplementedException
+            throw new NotImplementedException();
         }
     }
 }

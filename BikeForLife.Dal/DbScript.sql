@@ -29,6 +29,10 @@ CREATE TABLE Members(
 )
 GO
 
+INSERT Members VALUES ('Mich Jensen', '2019-05-21')
+INSERT Members VALUES ('Gitte Olsen', '2019-04-09')
+INSERT Members VALUES ('Trols Hansen', '2019-06-15')
+
 CREATE TABLE Rides(
 	RideId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	MemberId INT NOT NULL FOREIGN KEY REFERENCES Members(MemberId),

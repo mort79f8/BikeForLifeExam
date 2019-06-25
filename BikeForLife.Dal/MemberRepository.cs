@@ -1,40 +1,39 @@
-﻿using System;
+﻿using BikeForLife.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace BikeForLife.Dal
 {
-    class MemberRepository
+    public class MemberRepository : BaseRepository
     {
-        public List<BikeRoute> GetAll()
+        public List<Member> GetAll()
         {
-            string sql = "SELECT * FROM BikeRoutes";
+            string sql = "SELECT * FROM Members";
             DataTable dataTable = ExecuteQuery(sql);
             if (dataTable == null)
                 throw new InvalidOperationException($"DataTable was null. SQL string is: {sql}");
             return HandleData(dataTable);
         }
 
-        private List<BikeRoute> HandleData(DataTable dataTable)
+        private List<Member> HandleData(DataTable dataTable)
         {
             if (dataTable == null)
                 return null;
 
-            List<BikeRoute> routes = new List<BikeRoute>();
+            List<Member> members = new List<Member>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                routes.Add(new BikeRoute()
+                members.Add(new Member()
                 {
-                    Id = (int)row["BikeRouteId"],
+                    Id = (int)row["MemberId"],
                     Name = (string)row["Name"],
-                    Difficulty = (Difficulty)row["Difficulty"],
-                    Length = (double)row["Length"],
-                    Country = (string)row["Country"],
-                    City = (string)row["City"]
+                    EnrollmentDate = (DateTime)row["EnrollmentDate"]
                 });
             }
-            return routes;
+            return members;
         }
     }
 }
