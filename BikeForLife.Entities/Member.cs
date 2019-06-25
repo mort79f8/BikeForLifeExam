@@ -8,6 +8,7 @@ namespace BikeForLife.Entities
     public class Member
     {
         private List<Ride> rides;
+
         public int Id { get; set; }
         [Display(Name="Navn")]
         public string Name { get; set; }
@@ -15,8 +16,7 @@ namespace BikeForLife.Entities
         public DateTime EnrollmentDate { get; set; }
         [Display(Name = "Køreniveu")]
         public Difficulty RideLevel { get; }
-        public IReadOnlyList<Ride> Rides { get; }
-
+        public IReadOnlyList<Ride> Rides { get => rides; }
 
         public bool Add(Ride ride)
         {
