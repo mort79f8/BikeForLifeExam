@@ -1,0 +1,27 @@
+﻿@page
+@model BikeForLife.Web.Pages.MembersModel
+@{
+    ViewData["Title"] = "Members";
+}
+
+<h1>Members</h1>
+
+<table>
+    <tr>
+        <th>Navn</th>
+        <th>Tilmeldings dato</th>
+        <th>Køreniveau</th>
+    </tr>
+    <tbody>
+        @{ 
+            foreach (Member member in Model.Members)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.EnrollmentDate</td>
+                    <td>@member.RideLevel</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
