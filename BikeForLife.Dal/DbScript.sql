@@ -20,6 +20,7 @@ CREATE TABLE BikeRoutes(
 INSERT BikeRoutes VALUES ('Lundbykrat', 15.3, 1, 'Denmark', 'Gistrup')
 INSERT BikeRoutes VALUES ('Rebild bakker', 28.4, 2, 'Denmark', 'Rebild')
 INSERT BikeRoutes VALUES ('Aalborg Rundt', 65.2, 3, 'Denmark', 'Aalborg')
+INSERT BikeRoutes VALUES ('Klokkeholm sø tur', 3.5, 0, 'Denmark', 'Klokkeholm')
 GO
 
 CREATE TABLE Members(
@@ -32,6 +33,7 @@ GO
 INSERT Members VALUES ('Mich Jensen', '2019-05-21')
 INSERT Members VALUES ('Gitte Olsen', '2019-04-09')
 INSERT Members VALUES ('Trols Hansen', '2019-06-15')
+GO
 
 CREATE TABLE Rides(
 	RideId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -39,4 +41,11 @@ CREATE TABLE Rides(
 	BikeRouteId INT NOT NULL FOREIGN KEY REFERENCES BikeRoutes(BikeRouteId),
 	RideDate DATE NOT NULL 	
 )
+GO
+
+INSERT Rides VALUES (1, 4, '2019-01-01')
+INSERT Rides VALUES (1, 4, '2019-02-01')
+INSERT Rides VALUES (1, 4, '2019-03-01')
+INSERT Rides VALUES (1, 4, '2019-04-01')
+INSERT Rides VALUES (1, 4, '2019-05-01')
 GO
