@@ -35,5 +35,12 @@ namespace BikeForLife.Dal
             }
             return members;
         }
+
+        public int Insert(Member member)
+        {
+            string sql = $"INSERT INTO Members VALUES ('{member.Name}', '{member.EnrollmentDate.Date:yyyy-MM-dd}')";
+
+            return ExecuteNonQuery(sql);
+        }
     }
 }
