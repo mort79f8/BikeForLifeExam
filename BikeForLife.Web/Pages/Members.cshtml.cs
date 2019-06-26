@@ -13,8 +13,23 @@ namespace BikeForLife.Web.Pages
     {
         [BindProperty]
         public Member Member { get; set; }
-        public List<Member> Members { get; set; }
+        public List<Member> Members { get; set; } = new List<Member>();
         public IActionResult OnGet()
+        {
+            return InitializeData();
+        }
+
+        public IActionResult OnPost()
+        {
+            MemberRepository memberRepository = new MemberRepository();
+            if (Member.Name != null && Member.EnrollmentDate.Date <= DateTime.Today)
+            {
+                memberRepository.Insert(Member);
+            }
+            return InitializeData();
+        }
+
+        public IActionResult InitializeData()
         {
             MemberRepository memberRepository = new MemberRepository();
             try
