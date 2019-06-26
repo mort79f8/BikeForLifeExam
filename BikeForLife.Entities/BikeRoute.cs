@@ -16,5 +16,6 @@ namespace BikeForLife.Entities
         public string Country { get; set; }
         [Display(Name = "By")]
         public string City { get; set; }
+
     }
 }

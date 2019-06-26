@@ -16,7 +16,6 @@ namespace BikeForLife.Web.Pages
         [BindProperty]
         public BikeRoute BikeRoute { get; set; }
         public List<BikeRoute> BikeRoutes { get; set; } = new List<BikeRoute>();
-        //public OpenWeatherMap weatherMap { get; set; } = new OpenWeatherMap();
         public IActionResult OnGet()
         {
             BikeRouteRepository bikeRouteRepository = new BikeRouteRepository();
@@ -33,6 +32,11 @@ namespace BikeForLife.Web.Pages
 
         public void OnPost()
         {
+            BikeRouteRepository bikeRouteRepository = new BikeRouteRepository();
+            if (BikeRoute.Name != null && BikeRoute.Length > 0 && BikeRoute.City != null && BikeRoute.Country != null && BikeRoute.Difficulty >= 0)
+            {
+                bikeRouteRepository.Insert(BikeRoute);
+            }
 
         }
 
@@ -70,5 +74,6 @@ namespace BikeForLife.Web.Pages
             }
             return $"{icon}";
         }
+
     }
 }
