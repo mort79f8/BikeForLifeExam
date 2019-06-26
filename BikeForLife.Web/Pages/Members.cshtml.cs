@@ -32,6 +32,7 @@ namespace BikeForLife.Web.Pages
         public IActionResult InitializeData()
         {
             MemberRepository memberRepository = new MemberRepository();
+            RideRepository rideRepository = new RideRepository();
             try
             {
                 Members = memberRepository.GetAll();
@@ -40,8 +41,18 @@ namespace BikeForLife.Web.Pages
             {
                 return NotFound();
             }
+
+            foreach (Member member in Members)
+            {
+                member.Add(AddRidesToMember(member.Id));
+            }
             return Page();
         }
-    }
+        public List<Ride> AddRidesToMember(int memberId)
+        {
+            RideRepository rideRepository = new RideRepository();
+            return rideRepository.GetRidesFromMemberId(memberId);
+        }
 
+    }
 }

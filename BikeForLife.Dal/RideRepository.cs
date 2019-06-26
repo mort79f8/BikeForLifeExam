@@ -17,6 +17,14 @@ namespace BikeForLife.Dal
             return HandleData(dataTable);
         }
 
+        public List<Ride> GetRidesFromMemberId(int memberId)
+        {
+            string sql = $"SELECT * FROM Rides WHERE MemberId={memberId}";
+            DataTable dataTable = ExecuteQuery(sql);
+
+            return HandleData(dataTable);
+        }
+
         private List<Ride> HandleData(DataTable dataTable)
         {
             if (dataTable == null)
