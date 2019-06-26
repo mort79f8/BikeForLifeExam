@@ -38,6 +38,11 @@ namespace BikeForLife.Dal
             return routes;
         }
 
+        public int Insert(BikeRoute bikeRoute)
+        {
+            string sql = $"INSERT INTO BikeRoutes VALUES ('{bikeRoute.Name}', {bikeRoute.Length.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}, {(int)bikeRoute.Difficulty}, '{bikeRoute.Country}', '{bikeRoute.City}')";
 
+            return ExecuteNonQuery(sql);
+        }
     }
 }

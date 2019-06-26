@@ -18,26 +18,17 @@ namespace BikeForLife.Web.Pages
         public List<BikeRoute> BikeRoutes { get; set; } = new List<BikeRoute>();
         public IActionResult OnGet()
         {
-            BikeRouteRepository bikeRouteRepository = new BikeRouteRepository();
-            try
-            {
-                BikeRoutes = bikeRouteRepository.GetAll();
-            }
-            catch (InvalidOperationException)
-            {
-                return NotFound();
-            }
-            return Page();
+            return InitializeData();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             BikeRouteRepository bikeRouteRepository = new BikeRouteRepository();
             if (BikeRoute.Name != null && BikeRoute.Length > 0 && BikeRoute.City != null && BikeRoute.Country != null && BikeRoute.Difficulty >= 0)
             {
                 bikeRouteRepository.Insert(BikeRoute);
             }
-
+            return InitializeData();
         }
 
         // Samtale med Kian hjalp med at udforme de næste to metoder 
@@ -75,5 +66,19 @@ namespace BikeForLife.Web.Pages
             return $"{icon}";
         }
 
+        // Lavet med hjælp fra Kian
+        public IActionResult InitializeData()
+        {
+            BikeRouteRepository bikeRouteRepository = new BikeRouteRepository();
+            try
+            {
+                BikeRoutes = bikeRouteRepository.GetAll();
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
     }
 }
