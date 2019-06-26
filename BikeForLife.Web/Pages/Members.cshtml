@@ -17,8 +17,8 @@
             foreach (Member member in Model.Members)
             {
                 <tr>
-                    <td>@member.Name</td>
-                    <td>@member.EnrollmentDate</td>
+                    <td><a href="/ShowMember/@member.Id">@member.Name</a> </td>
+                    <td>@member.EnrollmentDate.Date.ToLongDateString()</td>
                     <td>@member.RideLevel</td>
                 </tr>
             }

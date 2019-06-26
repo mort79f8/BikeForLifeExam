@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace BikeForLife.Dal
@@ -15,6 +16,15 @@ namespace BikeForLife.Dal
             if (dataTable == null)
                 throw new InvalidOperationException($"DataTable was null. SQL string is: {sql}");
             return HandleData(dataTable);
+        }
+
+        public Member GetMember(int memberId)
+        {
+            string sql = $"SELECT * FROM Members WHERE MemberId={memberId}";
+            DataTable dataTable = ExecuteQuery(sql);
+            if (dataTable == null)
+                throw new InvalidOperationException($"DataTable was null. SQL string is: {sql}");
+            return HandleData(dataTable).FirstOrDefault();
         }
 
         private List<Member> HandleData(DataTable dataTable)

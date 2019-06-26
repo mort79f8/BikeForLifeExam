@@ -1,0 +1,50 @@
+﻿@page "{memberId}"
+@model BikeForLife.Web.Pages.ShowMemberModel
+@{
+    ViewData["Title"] = "ShowMember";
+}
+
+<h1>@Model.Member.Name</h1>
+
+<p>Blev medlem af klubben: @Model.Member.EnrollmentDate.Date</p>
+
+<table>
+    <tr>
+        <th>Tilmeldt til klubben</th>
+        <th>Køreniveau</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>@Model.Member.EnrollmentDate.Date.ToLongDateString()</td>
+            <td>@Model.Member.RideLevel</td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <tr>
+        <th>Rute navn</th>
+        <th>Længde</th>
+        <th>Sværhedsgrad</th>
+        <th>Land</th>
+        <th>By</th>
+        <th>køre dato</th>
+    </tr>
+    <tbody>
+        
+            @foreach (Ride ride in Model.Member.Rides)
+            {
+                <tr>
+                    <td>@ride.Route.Name</td>
+                    <td>@ride.Route.Length</td>
+                    <td>@ride.Route.Difficulty</td>
+                    <td>@ride.Route.Country</td>
+                    <td>@ride.Route.City</td>
+                    <td>@ride.RideDate.Date.ToLongDateString()</td>
+                </tr>
+            }
+
+    </tbody>
+</table>
+
+

@@ -11,11 +11,12 @@ namespace BikeForLife.Web.Pages
 {
     public class MembersModel : PageModel
     {
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public Member Member { get; set; }
         public List<Member> Members { get; set; } = new List<Member>();
         public IActionResult OnGet()
         {
+            Member = new Member();
             return InitializeData();
         }
 
