@@ -25,3 +25,13 @@
         }
     </tbody>
 </table>
+
+<div class="form">
+    <form asp-page="Members">
+        <label asp-for="Member.Name"></label>
+        <input asp-for="Member.Name" />
+        <label asp-for="Member.EnrollmentDate"></label><br />
+        <input asp-for="Member.EnrollmentDate" type="date"/>
+        <button type="submit">Opret</button>
+    </form>
+</div>
