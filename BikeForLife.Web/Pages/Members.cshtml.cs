@@ -44,14 +44,14 @@ namespace BikeForLife.Web.Pages
 
             foreach (Member member in Members)
             {
-                member.Add(AddRidesToMember(member.Id));
+                member.Add(AddRidesToMember(member));
             }
             return Page();
         }
-        public List<Ride> AddRidesToMember(int memberId)
+        public List<Ride> AddRidesToMember(Member member)
         {
             RideRepository rideRepository = new RideRepository();
-            return rideRepository.GetRidesFromMemberId(memberId);
+            return rideRepository.GetRidesFromMember(member);
         }
 
     }

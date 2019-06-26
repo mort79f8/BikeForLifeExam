@@ -17,15 +17,15 @@ namespace BikeForLife.Dal
             return HandleData(dataTable);
         }
 
-        public List<Ride> GetRidesFromMemberId(int memberId)
+        public List<Ride> GetRidesFromMember(Member member)
         {
-            string sql = $"SELECT * FROM Rides WHERE MemberId={memberId}";
+            string sql = $"SELECT * FROM Rides JOIN BikeRoutes ON Rides.BikeRouteId = BikeRoutes.BikeRouteId WHERE MemberId={member.Id}";
             DataTable dataTable = ExecuteQuery(sql);
 
-            return HandleData(dataTable);
+            return HandleData(dataTable, member);
         }
 
-        private List<Ride> HandleData(DataTable dataTable)
+        private List<Ride> HandleData(DataTable dataTable, Member member = null)
         {
             if (dataTable == null)
                 return null;
@@ -37,8 +37,16 @@ namespace BikeForLife.Dal
                 rides.Add(new Ride()
                 {
                     Id = (int)row["RideId"],
-                    Member = (Member)row["MemberId"],
-                    Route = (BikeRoute)row["BikeRouteId"],
+                    Member = member,
+                    Route = new BikeRoute()
+                    {
+                        Id = (int)row["BikeRouteId"],
+                        Name = (string)row["Name"],
+                        Length = (double)row["Length"],
+                        Difficulty = (Difficulty)row["Difficulty"],
+                        Country = (string)row["Country"],
+                        City = (string)row["City"]
+                    },
                     RideDate = (DateTime)row["RideDate"]
                 });
             }
