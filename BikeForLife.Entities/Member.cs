@@ -87,6 +87,16 @@ namespace BikeForLife.Entities
             }
         }
 
+        public void Add(List<Ride> listOfRides)
+        {
+            foreach (Ride ride in listOfRides)
+            {
+                if (!Add(ride))
+                {
+                    throw new ArgumentException("Adding a ride have failed, Contact system admin!");
+                }
+            }
+        }
 
     }
 }
