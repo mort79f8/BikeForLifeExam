@@ -30,6 +30,10 @@ namespace BikeForLife.Web.Pages
         {
             RideRepository rideRepository = new RideRepository();
             Member = memberRepository.GetMember(MemberId);
+            if (Member is null)
+            {
+                throw new ArgumentException("Person findes ikke!");
+            }
             Member.Add(AddRidesToMember(Member));
         }
 
